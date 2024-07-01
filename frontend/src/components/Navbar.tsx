@@ -7,7 +7,7 @@ export const Navbar = () => {
     return (
         <nav className="flex justify-between items-center p-4 bg-gray-800 text-white">
           <div className="text-2xl font-bold">
-            <SparklesText text="Galeech-API" />
+            <SparklesText className='font-mono' text="Galeech-API" />
           </div>
           <div className="flex gap-6">
             <Link className='pt-1' href="/video-api" passHref>
@@ -20,9 +20,9 @@ export const Navbar = () => {
               href="https://github.com/rishabhpandey106/galeech-api"
               target="_blank"
               rel="noopener noreferrer"
-              className="px-4 py-2 bg-yellow-500 text-white rounded-lg font-bold transition-colors duration-300 hover:bg-yellow-600"
+              className="px-4 py-2 bg-gray-500 text-white rounded-lg font-bold transition-colors duration-300 hover:bg-green-500"
             >
-              Star my GitHub
+              <span className='font-mono hover:text-white text-green-400'>Star my GitHub <span>&#9734;</span></span>
             </Link>
           </div>
         </nav>

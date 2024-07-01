@@ -2,6 +2,8 @@
 import { useState } from "react";
 import {PlaceholdersAndVanishInput} from "@/components/ui/placeholders-and-vanish-input";
 import { CoolMode } from "@/components/magicui/cool-mode";
+import SparklesText from "@/components/magicui/sparkles-text";
+import { VelocityScroll } from "@/components/magicui/scroll-based-velocity";
 
 export default function Home() {
   const [inputValue, setInputValue] = useState('');
@@ -30,14 +32,18 @@ export default function Home() {
       <div className="max-w-7xl w-full px-6 py-16">
         <div className="flex flex-col md:flex-row items-center md:items-start">
           <div className="md:w-1/2 mb-8 md:mb-0 md:pr-8">
-            <h1 className="text-5xl font-bold mb-6">Galeech API</h1>
-            <p className="text-xl mb-6">
-            Say goodbye to inappropriate language in your digital interactions. Gaalech-API provides fast and accurate detection of Hindi profanity ("gali"), ensuring a cleaner and more respectful online environment. Fast, efficient, and ready to integrate into your applications.
+            <h1 className="text-5xl font-bold mb-6"><VelocityScroll
+              text="Galeech API"
+              default_velocity={5}
+              className="font-display font-serif text-center text-4xl font-bold tracking-[-0.02em] text-gray-700 drop-shadow-sm dark:text-white md:text-7xl md:leading-[5rem]"
+            /></h1>
+            <p className="text-xl mb-6 text-justify text-mono">
+            Say goodbye to inappropriate language in your digital interactions. Galeech-API provides fast and accurate detection of Hindi profanity <span className="font-bold text-gray-700">("गाली")</span>, ensuring a cleaner and more respectful online environment. Fast, efficient, and ready to integrate into your applications.
             </p>
             <ul className="list-disc pl-5 space-y-2">
               <li>FEATURE 1</li>
-              <li>2</li>
-              <li>3</li>
+              <li>FEATURE 2</li>
+              <li>FEATURE 3</li>
             </ul>
           </div>
           <div className="md:w-1/2  p-8 rounded-lg ">
