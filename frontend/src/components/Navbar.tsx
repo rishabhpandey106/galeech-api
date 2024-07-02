@@ -5,16 +5,16 @@ import SparklesText from "@/components/magicui/sparkles-text";
 
 export const Navbar = () => {
     return (
-        <nav className="flex justify-between items-center p-4 bg-gray-800 text-white">
+        <nav className="flex justify-between items-center p-4 bg-gray-800 text-white ">
           <div className="text-2xl font-bold">
             <SparklesText className='font-mono' text="Galeech-API" />
           </div>
           <div className="flex gap-6">
-            <Link className='pt-1' href="/video-api" passHref>
-              <p className="text-lg hover:text-yellow-500 transition-colors duration-300">Video Demo</p>
+            <Link className='pt-1' href="/video-demo" passHref>
+              <p className="text-lg font-serif hover:text-yellow-500 transition-colors duration-300">Video Demo</p>
             </Link>
-            <Link className='pt-1' href="/demo" passHref>
-              <p className="text-lg hover:text-yellow-500 transition-colors duration-300">API</p>
+            <Link className='pt-1' href="/api" passHref>
+              <p className="text-lg font-serif hover:text-yellow-500 transition-colors duration-300">API</p>
             </Link>
             <Link
               href="https://github.com/rishabhpandey106/galeech-api"

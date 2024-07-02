@@ -3,21 +3,42 @@ import { useState } from "react";
 import {PlaceholdersAndVanishInput} from "@/components/ui/placeholders-and-vanish-input";
 import { CoolMode } from "@/components/magicui/cool-mode";
 import SparklesText from "@/components/magicui/sparkles-text";
+import Image from 'next/image'
 import { VelocityScroll } from "@/components/magicui/scroll-based-velocity";
+
 
 export default function Home() {
   const [inputValue, setInputValue] = useState('');
   const [result, setResult] = useState('');
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     console.log(e.target.value);
+    setInterval(()=>setInputValue(e.target.value), 3000)
   };
 
-  const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    setResult(`You submitted: ${inputValue}`);
-    console.log("submitted");
+    
+    try {
+      const response = await fetch('https://galeech-api.herokanon39.workers.dev', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ text: inputValue }),
+      });
+  
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
+  
+      const data = await response.json();
+      console.log(data);
+      setResult(`You submitted: ${data.success}`);
+    } catch (error:any) {
+      console.error('There was a problem with the fetch operation:', error);
+      setResult(`Submission failed: ${error.message}`);
+    }
   };
+  
 
   const placeholders = [
     "What's the first rule of Fight Club?",
@@ -32,25 +53,25 @@ export default function Home() {
       <div className="max-w-7xl w-full px-6 py-16">
         <div className="flex flex-col md:flex-row items-center md:items-start">
           <div className="md:w-1/2 mb-8 md:mb-0 md:pr-8">
-            <h1 className="text-5xl font-bold mb-6"><VelocityScroll
-              text="Galeech API"
+            <div className="text-5xl font-bold mb-6"><VelocityScroll
+              text="Galeech API गलीच API"
               default_velocity={5}
-              className="font-display font-serif text-center text-4xl font-bold tracking-[-0.02em] text-gray-700 drop-shadow-sm dark:text-white md:text-7xl md:leading-[5rem]"
-            /></h1>
+              className="font-serif text-center text-4xl font-bold tracking-[-0.02em] text-gray-700 drop-shadow-sm dark:text-white md:text-7xl md:leading-[5rem]"
+            /></div>
             <p className="text-xl mb-6 text-justify text-mono">
             Say goodbye to inappropriate language in your digital interactions. Galeech-API provides fast and accurate detection of Hindi profanity <span className="font-bold text-gray-700">("गाली")</span>, ensuring a cleaner and more respectful online environment. Fast, efficient, and ready to integrate into your applications.
             </p>
-            <ul className="list-disc pl-5 space-y-2">
-              <li>FEATURE 1</li>
-              <li>FEATURE 2</li>
-              <li>FEATURE 3</li>
+            <ul className="list-none pl-5 space-y-2 ">
+              <li><span>😎</span> Scalable and Efficient</li>
+              <li><span>🤯</span> Fast, Accurate, and Unique Hindi Profanity Detector</li>
+              <li><span>🤑</span> 100% Free and Open-Source</li>
             </ul>
           </div>
           <div className="md:w-1/2  p-8 rounded-lg ">
             <div className="space-y-4">
               <p className="flex items-center">
                 <CoolMode>
-                <button className="inline-flex h-8 animate-shimmer items-center justify-center rounded-md border border-slate-800 bg-[linear-gradient(110deg,#000103,45%,#1e2631,55%,#000103)] bg-[length:200%_100%] px-6 font-medium text-slate-400 transition-colors focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2 focus:ring-offset-slate-50">
+                <button className="inline-flex h-8 animate-shimmer items-center justify-center rounded-md border border-slate-800 bg-[linear-gradient(110deg,#000103,45%,#1e2631,55%,#000103)] bg-[length:200%_100%] px-6 font-medium text-slate-400 transition-colors focus:outline-none">
                   POST
                 </button>
                 </CoolMode>
@@ -58,7 +79,7 @@ export default function Home() {
               </p>
                   <PlaceholdersAndVanishInput
                     placeholders={placeholders}
-                    onChange={e=>setInputValue(e.target.value)}
+                    onChange={onChange}
                     onSubmit={onSubmit}
                   />
             </div>
