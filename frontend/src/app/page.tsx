@@ -94,7 +94,7 @@ export default function Home() {
               className="font-serif text-center text-4xl font-bold tracking-[-0.02em] text-gray-700 drop-shadow-sm dark:text-white md:text-7xl md:leading-[5rem]"
             /></div>
             <p className="text-xl mb-6 text-justify text-mono">
-            Say goodbye to inappropriate language in your digital interactions. Galeech-API provides fast and accurate detection of Hindi profanity <span className="font-bold text-gray-700">("गाली")</span>, ensuring a cleaner and more respectful online environment. Fast, efficient, and ready to integrate into your applications.
+            Say goodbye to inappropriate language in your digital interactions. Galeech-API provides fast and accurate detection of Hindi profanity <span className="font-bold text-gray-700">(&quot;गाली&quot;)</span>, ensuring a cleaner and more respectful online environment. Fast, efficient, and ready to integrate into your applications.
             </p>
             <ul className="list-none pl-5 space-y-2 ">
               <li><span>😎</span> Scalable and Efficient</li>
