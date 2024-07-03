@@ -9,7 +9,10 @@ import { VelocityScroll } from "@/components/magicui/scroll-based-velocity";
 
 export default function Home() {
   const [inputValue, setInputValue] = useState('');
-  const [result, setResult] = useState('');
+  const [result, setResult] = useState({
+    text: '',
+    score: '',
+  });
 
   const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     console.log(e.target.value);
@@ -32,10 +35,31 @@ export default function Home() {
   
       const data = await response.json();
       console.log(data);
-      setResult(`You submitted: ${data.success}`);
+      if(data.isFlagged === false){
+        const output = {
+          text: '100% Clean',
+          score: data.score,
+        }
+        setResult(output);
+      }
+      else{
+        if(data.score > 0.95){
+          const output = {
+            text: 'भयंकर गाली Found',
+            score: data.score
+          }
+          setResult(output);
+        }else{
+          const output = {
+            text: 'गाली Found',
+            score: data.score
+          }
+          setResult(output);
+        }
+      }
     } catch (error:any) {
       console.error('There was a problem with the fetch operation:', error);
-      setResult(`Submission failed: ${error.message}`);
+      // setResult(`Submission failed: ${error.message}`);
     }
   };
   
@@ -47,12 +71,23 @@ export default function Home() {
     "Write a Javascript method to reverse a string",
     "How to assemble your own PC?",
   ];
+
+  const getColorClasses = (text: string): string => {
+    if (text === '100% Clean') {
+      return 'bg-green-100 border-green-400 text-green-800';
+    } else if (text === 'भयंकर गाली Found') {
+      return 'bg-red-100 border-red-400 text-red-800';
+    } else {
+      return 'bg-yellow-100 border-yellow-400 text-yellow-800';
+    }
+  };
   
   return (
     <div className="min-h-screen flex items-center justify-center bg-custom-bg bg-opacity-80 bg-custom-pattern bg-custom-size bg-custom-position text-gray-800">
       <div className="max-w-7xl w-full px-6 py-16">
         <div className="flex flex-col md:flex-row items-center md:items-start">
           <div className="md:w-1/2 mb-8 md:mb-0 md:pr-8">
+          
             <div className="text-5xl font-bold mb-6"><VelocityScroll
               text="Galeech API गलीच API"
               default_velocity={5}
@@ -75,7 +110,7 @@ export default function Home() {
                   POST
                 </button>
                 </CoolMode>
-                <span className="ml-2 text-gray-500">https://galeech-api.herokanon39.workers.dev</span>
+                <span className="ml-2 text-gray-500 font-extrabold font-mono">https://galeech-api.herokanon39.workers.dev</span>
               </p>
                   <PlaceholdersAndVanishInput
                     placeholders={placeholders}
@@ -83,9 +118,10 @@ export default function Home() {
                     onSubmit={onSubmit}
                   />
             </div>
-            {result && (
-              <div className="mt-4 p-4 bg-yellow-100 border border-yellow-400 rounded-lg text-yellow-800">
-                {result}
+            {result.text.length > 0 && (
+              <div className={`mt-4 p-4 border rounded-lg flex flex-col ${getColorClasses(result.text)}`}>
+                <span className="">{result.text}</span>
+                <span>Score - {result.score}</span>
               </div>
             )}
           </div>

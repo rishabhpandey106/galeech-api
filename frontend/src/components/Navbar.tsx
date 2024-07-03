@@ -7,12 +7,11 @@ export const Navbar = () => {
     return (
         <nav className="flex justify-between items-center p-4 bg-gray-800 text-white ">
           <div className="text-2xl font-bold">
+          <Link className='pt-1' href="/" passHref>
             <SparklesText className='font-mono' text="Galeech-API" />
+            </Link>
           </div>
           <div className="flex gap-6">
-            <Link className='pt-1' href="/video-demo" passHref>
-              <p className="text-lg font-serif hover:text-yellow-500 transition-colors duration-300">Video Demo</p>
-            </Link>
             <Link className='pt-1' href="/api" passHref>
               <p className="text-lg font-serif hover:text-yellow-500 transition-colors duration-300">API</p>
             </Link>

@@ -9,45 +9,32 @@ const people = [
   {
     id: 1,
     name: "Instagram",
-    designation: "",
+    designation: "https://www.instagram.com/rishabhpandey___",
     image:
-      "",
+      "/instagram.png",
   },
   {
     id: 2,
     name: "Twitter",
-    designation: "",
+    designation: "https://x.com/18rishabh",
     image:
-      "",
+      "/twitter.png",
   },
   {
     id: 3,
-    name: "Github",
-    designation: "https://github.com/rishabhpandey106/galeech-api",
+    name: "Youtube",
+    designation: "https://youtube.com/@reactwithrishabh?si=RADbHxO9AAzjEntR",
     image:
-      "",
+      "/youtube.png",
   },
   {
     id: 4,
-    name: "Leetcode",
-    designation: "",
+    name: "Github",
+    designation: "https://github.com/rishabhpandey106",
     image:
-      "",
+      "/github.png",
   },
-  {
-    id: 5,
-    name: "Codechef",
-    designation: "",
-    image:
-      "",
-  },
-  {
-    id: 6,
-    name: "Omni-API",
-    designation: "",
-    image:
-      "",
-  },
+  
 ];
 
 const apiSnippet = `try {
@@ -71,7 +58,7 @@ const apiSnippet = `try {
 const ApiPage = () => {
 
   return (
-    <div className="container mx-auto px-4 py-8 min-h-screen items-center justify-center bg-custom-bg bg-opacity-80 bg-custom-pattern bg-custom-size bg-custom-position text-gray-800">
+    <div className="container mx-auto px-4 py-12 min-h-screen items-center justify-center bg-custom-bg bg-opacity-80 bg-custom-pattern bg-custom-size bg-custom-position text-gray-800">
       <BoxReveal boxColor={"#bec8d1"} duration={0.5}><h1 className="text-3xl font-bold mb-4">API Usage</h1></BoxReveal>
       <BoxReveal boxColor={"#bec8d1"} duration={0.5}><p className="mb-6">
         Gaalech-API is a fast and accurate tool for detecting Hindi profanity. Below is a code snippet on how to use the API.
@@ -79,7 +66,7 @@ const ApiPage = () => {
       <SyntaxHighlighter language="javascript" style={vscDarkPlus}>
         {apiSnippet}
       </SyntaxHighlighter>
-      <div className="flex flex-row items-center justify-center mb-10 w-full">
+      <div className="flex flex-row items-center justify-center mt-20 mb-10 w-full">
       <AnimatedTooltip items={people} />
     </div>
     </div>
