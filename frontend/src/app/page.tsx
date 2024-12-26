@@ -43,7 +43,7 @@ export default function Home() {
         setResult(output);
       }
       else{
-        if(data.score > 0.95){
+        if(data.score >= 0.895){
           const output = {
             text: 'भयंकर गाली Found',
             score: data.score
