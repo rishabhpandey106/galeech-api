@@ -49,9 +49,16 @@ export default function Home() {
             score: data.score
           }
           setResult(output);
-        }else{
+        }else if(data.score >= 0.8 && data.score < 0.895){
           const output = {
             text: 'गाली Found',
+            score: data.score
+          }
+          setResult(output);
+        }
+        else{
+          const output = {
+            text: 'Neutral',
             score: data.score
           }
           setResult(output);
@@ -77,9 +84,12 @@ export default function Home() {
       return 'bg-green-100 border-green-400 text-green-800';
     } else if (text === 'भयंकर गाली Found') {
       return 'bg-red-100 border-red-400 text-red-800';
-    } else {
+    } else if (text === 'गाली Found') {
       return 'bg-yellow-100 border-yellow-400 text-yellow-800';
+    } else {
+      return 'bg-blue-100 border-blue-400 text-blue-800';
     }
+
   };
   
   return (
